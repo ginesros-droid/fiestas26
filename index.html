@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiestas S. la Seca 26</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #fdfbfb;
+            background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* Título llamativo y divertido */
+        h1.titulo-principal {
+            font-family: 'Bangers', cursive;
+            text-align: center;
+            font-size: 4rem;
+            color: #ff007f;
+            text-shadow: 3px 3px 0 #fff, 6px 6px 0 #ffeb3b, 9px 9px 0 #00e5ff;
+            margin: 30px 10px;
+            letter-spacing: 3px;
+            animation: saltar 2s infinite alternate;
+        }
+
+        @keyframes saltar {
+            0% { transform: translateY(0) rotate(-2deg); }
+            100% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        /* Contenedores de pantallas */
+        .pantalla {
+            display: none;
+            flex: 1;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .pantalla.activa {
+            display: block;
+            animation: aparecer 0.5s ease-in-out;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Cuadrícula de iconos (días) */
+        .grid-dias {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .icono-dia {
+            background: white;
+            border-radius: 20px;
+            padding: 20px 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 3px solid transparent;
+        }
+
+        .icono-dia:nth-child(odd) { color: #ff5722; }
+        .icono-dia:nth-child(even) { color: #2196f3; }
+
+        .icono-dia:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+            border-color: #ffeb3b;
+            background-color: #fffde7;
+        }
+
+        /* Estilos de los eventos */
+        .titulo-dia {
+            font-family: 'Bangers', cursive;
+            font-size: 3rem;
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+
+        .evento {
+            background: rgba(255, 255, 255, 0.9);
+            border-left: 8px solid #ff007f;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .evento-hora {
+            color: #d81b60;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        .evento-desc {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* Botón de volver */
+        .btn-volver {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #ff4081, #d50000);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(213, 0, 0, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .btn-volver:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer discreto */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: rgba(0, 0, 0, 0.4);
+            margin-top: auto;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="pantalla-principal" class="pantalla activa">
+        <h1 class="titulo-principal">Fiestas S. la Seca 26</h1>
+        
+        <div class="grid-dias">
+            <div class="icono-dia" onclick="mostrarDia('dia-23m')">📅 Sábado<br>23 Mayo</div>
+            <div class="icono-dia" onclick="mostrarDia('dia-3j')">📅 Miércoles<br>3 Junio</div>
+            <div class="icono-dia" onclick="mostrarDia('dia-4j')">📅 Jueves<br>4 Junio</div>
+            <div class="icono-dia" onclick="mostrarDia('dia-5j')">📅 Viernes<br>5 Junio</div>
+            <div class="icono-dia" onclick="mostrarDia('dia-6j')">📅 Sábado<br>6 Junio</div>
+            <div class="icono-dia" onclick="mostrarDia('dia-7j')">📅 Domingo<br>7 Junio</div>
+            <div class="icono-dia" onclick="mostrarDia('dia-8j')">📅 Lunes<br>8 Junio</div>
+            <div class="icono-dia" onclick="mostrarDia('dia-9j')">📅 Martes<br>9 Junio</div>
+        </div>
+    </div>
+
+    <div id="dia-23m" class="pantalla">
+        <h2 class="titulo-dia">Sábado 23 Mayo</h2>
+        <div class="evento"><span class="evento-hora">06:15:</span><span class="evento-desc">Salida de autobuses desde la puerta del Centro Cultural hasta la Ermita Roca.</span></div>
+        <div class="evento"><span class="evento-hora">07:00:</span><span class="evento-desc">Tradicional <strong>Bajada de nuestro Patrono</strong>, el Sacratísimo Corazón de Jesús desde su Ermita hasta la Parroquia de San José.</span></div>
+        <div class="evento"><span class="evento-hora">13:00:</span><span class="evento-desc">Al finalizar la romería, las peñas y los vecinos que lo deseen prepararán <strong>paellas</strong> en el recinto de fiestas.</span></div>
+        <button class="btn-volver" onclick="volver()">🔙 Volver al jaleo</button>
+    </div>
+
+    <div id="dia-3j" class="pantalla">
+        <h2 class="titulo-dia">Miércoles 3 Junio</h2>
+        <div class="evento"><span class="evento-hora">19:00:</span><span class="evento-desc">Actuaciones de las <strong>Academias de baile</strong> de la pedanía, en el recinto de fiestas.</span></div>
+        <button class="btn-volver" onclick="volver()">🔙 Volver al jaleo</button>
+    </div>
+
+    <div id="dia-4j" class="pantalla">
+        <h2 class="titulo-dia">Jueves 4 Junio</h2>
+        <div class="evento"><span class="evento-hora">17:00:</span><span class="evento-desc"><strong>Día del niño</strong> en todas las atracciones: precios populares con <strong>grandes descuentos.</strong></span></div>
+        <button class="btn-volver" onclick="volver()">🔙 Volver al jaleo</button>
+    </div>
+
+    <div id="dia-5j" class="pantalla">
+        <h2 class="titulo-dia">Viernes 5 Junio</h2>
+        <div class="evento"><span class="evento-hora">22:00:</span><span class="evento-desc">Pregón de fiestas a cargo de <strong>D. Juan Pedro Belando.</strong></span></div>
+        <div class="evento"><span class="evento-hora">22:00:</span><span class="evento-desc"><strong>Cena Panocha</strong> en el recinto de fiestas. ¡No olvides tu traje de huertan@!</span></div>
+        <div class="evento"><span class="evento-hora">23:00:</span><span class="evento-desc">Gran actuación del grupo <strong>"Los nº 1 y Diego Martín"</strong></span></div>
+        <div class="evento"><span class="evento-hora">01:00:</span><span class="evento-desc">Actuación del Dj. <strong>Di Carlo</strong> y, al finalizar, <strong>Dj Camión.</strong></span></div>
+        <button class="btn-volver" onclick="volver()">🔙 Volver al jaleo</button>
+    </div>
+
+    <div id="dia-6j" class="pantalla">
+        <h2 class="titulo-dia">Sábado 6 Junio</h2>
+        <div class="evento"><span class="evento-hora">16:00:</span><span class="evento-desc"><strong>Pasacalles de las peñas</strong> hasta el Centro Cultural.</span></div>
+        <div class="evento"><span class="evento-hora">20:00:</span><span class="evento-desc">Gran desfile de <strong>carrozas</strong> con la participación de las <strong>escuelas de baile</strong> y las <strong>peñas</strong> de la pedanía.</span></div>
+        <div class="evento"><span class="evento-hora">22:30:</span><span class="evento-desc">Noche de la canción española y del <strong>humor</strong> con la actuación de <strong>Maribel Castillo y Los Quillos.</strong></span></div>
+        <div class="evento"><span class="evento-hora">00:30:</span><span class="evento-desc"><strong>Dj Gambín</strong></span></div>
+        <button class="btn-volver" onclick="volver()">🔙 Volver al jaleo</button>
+    </div>
+
+    <div id="dia-7j" class="pantalla">
+        <h2 class="titulo-dia">Domingo 7 Junio</h2>
+        <div class="evento"><span class="evento-hora">12:00:</span><span class="evento-desc">Fiesta infantil con deslizador, <strong>dos toboganes gigantes.</strong> En la cuesta de la C/ San Juan (junto al Centro Cultural). ¡No olvides tu flotador-donut!</span></div>
+        <div class="evento"><span class="evento-hora">20:00:</span><span class="evento-desc"><strong>Misa y procesión</strong> de nuestro patrono el Sacratísimo Corazón de Jesús.</span></div>
+        <div class="evento"><span class="evento-hora">23:00:</span><span class="evento-desc"><strong>Noche flamenca</strong> con la actuación de <strong>Sali Merino</strong> y su grupo.</span></div>
+        <button class="btn-volver" onclick="volver()">🔙 Volver al jaleo</button>
+    </div>
+
+    <div id="dia-8j" class="pantalla">
+        <h2 class="titulo-dia">Lunes 8 Junio</h2>
+        <div class="evento"><span class="evento-hora">20:30:</span><span class="evento-desc">Actuación del grupo de teatro Benizabel, en el Centro Cultural, con la obra "Sé lo que aparentas"</span></div>
+        <div class="evento"><span class="evento-hora">22:30:</span><span class="evento-desc"><strong>Noche de las migas.</strong></span></div>
+        <div class="evento"><span class="evento-hora">23:00:</span><span class="evento-desc">Actuación del grupo <strong>"La década de tu vida".</strong></span></div>
+        <button class="btn-volver" onclick="volver()">🔙 Volver al jaleo</button>
+    </div>
+
+    <div id="dia-9j" class="pantalla">
+        <h2 class="titulo-dia">Martes 9 Junio</h2>
+        <div class="evento"><span class="evento-hora">12:00:</span><span class="evento-desc"><strong>Sango Holly Solidaria</strong> encuentro en el recinto de fiestas y pasacalles hasta la explanada de detrás del <strong>pipicán.</strong><br>En el supermercado <strong>Sangui</strong> de Sangonera la Seca con cada kilo de alimentos que compres y deposites - <strong>un vale para la HOLLY</strong></span></div>
+        <div class="evento"><span class="evento-hora">13:00:</span><span class="evento-desc">Fiesta de la <strong>espuma</strong> con Dj. Stefan.</span></div>
+        <button class="btn-volver" onclick="volver()">🔙 Volver al jaleo</button>
+    </div>
+
+    <div class="footer">
+        Ginés Ros 26
+    </div>
+
+    <script>
+        // Función para ocultar todas las pantallas y mostrar la elegida
+        function mostrarDia(idDia) {
+            // Ocultamos todas las pantallas
+            let pantallas = document.querySelectorAll('.pantalla');
+            pantallas.forEach(function(pantalla) {
+                pantalla.classList.remove('activa');
+            });
+            
+            // Mostramos la pantalla solicitada
+            document.getElementById(idDia).classList.add('activa');
+            // Subimos al principio de la página (útil en móviles)
+            window.scrollTo(0, 0);
+        }
+
+        // Función para volver a la pantalla principal
+        function volver() {
+            mostrarDia('pantalla-principal');
+        }
+    </script>
+</body>
+</html>
