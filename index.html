@@ -140,6 +140,46 @@
             transform: scale(1.1);
         }
 
+        /* Overlay splash */
+        #splash {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #d50000 0%, #ff6f00 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
+
+        #splash.oculto {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #splash .splash-emoji {
+            font-size: 5rem;
+            animation: saltar 1.5s infinite alternate;
+        }
+
+        #splash .splash-texto {
+            font-family: 'Bangers', cursive;
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+            margin: 20px 20px 10px;
+            text-align: center;
+        }
+
+        #splash .splash-sub {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            margin-top: 30px;
+        }
+
         /* Footer discreto */
         .footer {
             text-align: center;
@@ -152,6 +192,12 @@
     </style>
 </head>
 <body>
+
+    <div id="splash" onclick="cerrarSplash()">
+        <div class="splash-emoji">🎉</div>
+        <div class="splash-texto">Fiestas ya acabadas</div>
+        <div class="splash-sub">Toca para ver el programa</div>
+    </div>
 
     <div id="pantalla-principal" class="pantalla activa">
         <h1 class="titulo-principal">Fiestas S. la Seca 26</h1>
@@ -234,6 +280,14 @@
     </div>
 
     <script>
+        function cerrarSplash() {
+            var splash = document.getElementById('splash');
+            splash.classList.add('oculto');
+            splash.addEventListener('transitionend', function() {
+                splash.style.display = 'none';
+            }, { once: true });
+        }
+
         // Función para ocultar todas las pantallas y mostrar la elegida
         function mostrarDia(idDia) {
             // Ocultamos todas las pantallas
